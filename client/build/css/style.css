@@ -1,0 +1,13 @@
+
+/* body{
+     background-image: url('./images/3-012_unicorn.png');
+    background-repeat: no-repeat;
+    background-color: rgba(223, 0, 0, .3);
+} */
+
+.tcol{
+    color:purple;
+    padding:20px;
+    font-size:45px;
+    border: solid 5px #ee0979;
+}
