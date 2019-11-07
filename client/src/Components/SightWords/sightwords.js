@@ -16,6 +16,7 @@ class SightWords extends Component{
  
 componentDidMount(){
   axios.get('/api/sight_words').then(response=> {
+    console.log(response.data)
     this.setState({sightwords:response.data})
   }).catch(err=> this.setState({sightwords:"Error"}))
 
