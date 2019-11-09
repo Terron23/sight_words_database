@@ -11,7 +11,7 @@ export class Modal extends Component {
       words
     }).then(function (response) {
       document.getElementById('words').value = ''
-      console.log(response);
+     window.location = '/'
     })
     .catch(function (error) {
       console.log(error);
@@ -44,10 +44,6 @@ export class Modal extends Component {
 
       </div>
 
-     
-      <div className="modal-footer">
-        <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
 
     </div>
   </div>
