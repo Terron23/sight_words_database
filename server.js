@@ -31,7 +31,7 @@ const client = new Client({
 
 
   const getSightWords = (request, response) => {
-    client.query("Select id, word from sightwords", (error, results) =>{
+    client.query("Select distinct id, word from sightwords order by id desc", (error, results) =>{
         if (error) {
             throw error
           }
