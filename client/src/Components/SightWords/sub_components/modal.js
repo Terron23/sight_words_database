@@ -36,7 +36,7 @@ export class Modal extends Component {
 
   <div className="form-group">
     <label for="pwd">New Words:</label>
-    <input type="text" className="form-control" id="words" name="words" />
+    <input type="text" className="form-control" id="words" name="words" autoComplete="off" />
   </div>
 
   <button type="submit" className="btn btn-primary">Submit</button>
