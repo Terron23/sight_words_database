@@ -46,17 +46,28 @@ handleVoices=()=>{
 
 }
 
-
-handleWords =()=> {
+handleRemove =(id, hide)=>{
   
-    // let arr = ["i", "a", "in", "be", "no", "he", "do", "go", "an", "is", "see", "can", "my", "to", "we", "and", 
-    // "the", "like", "she", "but", "play", "said", "get", "big", "our"];
+  axios.delete('/api/delete_words',{data:{
+    id:id}}).then(response=> {
+      document.getElementById(`${hide}`).style.display = 'none'
+  }).catch(err=> this.setState({sightwords:"Error"}))
+}
 
-    let obj = this.state.sightwords
+
+handleWords =(newWord=null, e)=> {
+console.log("Word", newWord)
+let {sightwords}= this.state;
+let obj = this.state.sightwords
+if(newWord){
+  obj.push(newWord)
+  alert(obj[obj.length-1])
+}
 
     return obj.map(words=>{
       let word = words.word
-        return (<div className="tcol col-md-3 tdiv">
+      let hideId = word+'_'+words.id
+        return (<div key={words.id} id={hideId} className="tcol col-md-3 tdiv">
         <Speech 
         styles={styles} 
         text={`${word}`} 
@@ -65,9 +76,11 @@ handleWords =()=> {
         rate="0.5"
         voice="Fred" 
         textAsButton={true}
+        id={word}
         />
         <canva  style={{"fontSize":"20px"}}>
       <button onClick={()=>this.handleReveal(`${word}_id`)} className="btn btn-primary">Spell</button>
+      <button onClick={()=>this.handleRemove(words.id, hideId)} className="btn btn-danger">Remove Sight</button>
      
 
 <div style={{"display":"none"}}  id={`${word}_id`}>
@@ -106,9 +119,7 @@ document.getElementById(id).style.color = "green";
 else{
   document.getElementById(id).innerHTML = "x";
   document.getElementById(id).style.color = "red";
- 
 }
-
 }
 
  render(){
@@ -118,10 +129,11 @@ else{
   return (
 <div className="container">
 
-<a   className="btn btn-primary btn-xl rounded-pill mt-5"
+{/* <a   className="btn btn-primary btn-xl rounded-pill mt-5"
         data-toggle="modal" data-target="#myModal">
            Add New Sight Words +
-        </a>
+        </a> */}
+        <Modal addWord={this.handleWords} />
   <hr />
   {/* <Record /> */}
 <div className="row text-center">
@@ -129,7 +141,7 @@ else{
     {this.handleWords()}
     {this.handleVoices}
 </div>
-<Modal />
+
 </div>
   );
 }

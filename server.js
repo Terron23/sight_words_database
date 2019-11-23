@@ -53,6 +53,18 @@ const client = new Client({
     })  
   }
 
+
+  const deleteSightWords = (request, response) => {
+    const {id} = request.body
+    client.query(`delete from SightWords where id =${id}`, (error) =>{
+        if (error) {
+            throw error
+          }
+
+          response.status(200).json(id + "Succesfully Removed")
+    })  
+  }
+
   app.use(express.static(path.join(__dirname+'/client/build')))
 
 
@@ -63,6 +75,8 @@ const client = new Client({
 app.get('/api/sight_words', getSightWords);
 
 app.post('/api/add_words', addSightWords);
+
+app.delete('/api/delete_words', deleteSightWords);
 
 
 
