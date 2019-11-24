@@ -36,7 +36,7 @@ export class Modal extends Component {
       <div className="modal-body"> */}
       <form onSubmit={this.handleSubmit} className="form" style={{"padding":"20px"}} id="wordForm">
       <label for="pwd">Add New Words:</label>
-  <div className="input-group col-6">
+  <div className="input-group col-md-6 col-sm-12">
     <input type="text" className="form-control" id="words" name="words" autoComplete="off" required/>
 
     <div class="input-group-append">

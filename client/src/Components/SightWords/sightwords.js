@@ -77,23 +77,23 @@ if(newWord){
         voice="Fred" 
         textAsButton={true}
         id={word}
-        />
+        /><br/>
         <canva  style={{"fontSize":"20px"}}>
-      <button onClick={()=>this.handleReveal(`${word}_id`)} className="btn btn-primary">Spell</button>
-      <button onClick={()=>this.handleRemove(words.id, hideId)} className="btn btn-danger">Remove Sight</button>
+      <button onClick={()=>this.handleReveal(`${word}_id`)} className="btn btn-primary"> Spell {word}</button><br/>
      
 
-<div style={{"display":"none"}}  id={`${word}_id`}>
+<div style={{"display":"none"}}  id={`${word}_id`} >
 <hr style={{"padding":"7px"}}/>
  
       <i id={`${word}_answer`}></i>
-
+      
       <input id={word} type="text" name={word} defaultValue="" /> 
      
       <button onClick={() =>this.handleSpelling(word, document.getElementById(word).value)}
        className="btn btn-primary">Submit</button>
        </div>
       </canva>
+      <button onClick={()=>this.handleRemove(words.id, hideId)} className="btn btn-danger">Remove Sight</button>
         </div>)
     })
 }
